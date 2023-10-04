@@ -6,7 +6,6 @@ torch
                        
 streamlit_webrtc                                                           
 mediapipe==0.8.9.1
-ultralytics
 pytube
 super-gradients==3.1.0
 imutils
