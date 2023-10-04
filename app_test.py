@@ -1,8 +1,7 @@
-
+import torch
 import requests
 import streamlit as st
 from PIL import Image
-from ultralytics import YOLO
 import cv2
 from io import BytesIO
 from streamlit_webrtc import (
@@ -14,8 +13,13 @@ from streamlit_webrtc import (
 
 st.set_page_config(page_title="Computer vision", page_icon="🖥️")
 
-# Initialize the YOLOv5 model
-model = YOLO("best_yolov5_and_only_3_classes.pt")
+# Load the model with error handling
+try:
+    model = torch.hub.load('ultralytics/yolov5', 'custom', 'bestyolov5_11clases150epoches.pt', force_reload=True)
+except Exception as e:
+    print("Error loading the model:", e)
+    exit()
+
 
 
 # Define the Streamlit app
